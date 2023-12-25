@@ -66,4 +66,25 @@ passport.deserializeUser(async (id, done) => {
 });
 
 
+passport.use('local.login', new localStrategy({
+    usernameField: 'phoneNumber',
+    passwordField: 'password',
+    passReqToCallback: true,
+}, async (req, phoneNumber, password, done)=>{
+    try{
+        const user = await User.findOne({'phoneNumber' : phoneNumber});
+
+        // console.log(user);
+
+        if(!user || !user.comparePassword(password)){
+            return done(null, false, {message : 'The username or password is incorrect.'})
+        }
+
+        return done(null, user);
+    }catch(err){
+        return done(err, false, {message : 'There was a problem logging into your account.'})
+    }
+}))
+
+
 module.exports = passport;
