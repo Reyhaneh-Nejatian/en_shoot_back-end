@@ -62,5 +62,10 @@ User.methods.generateToken= async function() {
 // }
 
 
+User.methods.comparePassword = function(password){
+  return bcrypt.compareSync(password, this.password);
+}
+
+
 
 module.exports = mongoose.model('User', User);
