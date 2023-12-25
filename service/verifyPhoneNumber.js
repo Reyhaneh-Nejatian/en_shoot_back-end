@@ -11,7 +11,7 @@ const sendCode = async(mobile) => {
         mobile: mobile,
         templateID: 9,
         length: 5,
-        expireTime : 60
+        expireTime : 125
       });
 
       return referenceID;
@@ -82,91 +82,6 @@ const sendCode = async(mobile) => {
       }
     }
   };
-  
-
-
-  
-
-
- 
-
-    
-
-    // try {
-    //   const result = await otp.verify({
-    //     mobile: phoneNumber,
-    //     otp: code,
-    //   });
-
-    //   console.log(result);
-  
-    //   if (result) {
-    //     const updatedUser = await User.findOneAndUpdate(
-    //       { phoneNumber: phoneNumber },
-    //       { $set: { isVerified: true } },
-    //       { new: true }
-    //     );
-  
-    //     if (updatedUser) {
-    //       return { message: 'User is verified successfully.', token: updatedUser.token };
-    //     } else {
-    //       return { message: 'User not found.' };
-    //     }
-    //   } else {
-    //     return { error: 'Verification failed.' };
-    //   }
-    // } catch (error) {
-    //   if (isMessageWayError(error)) {
-    //     return { error: error.message };
-    //   } else {
-    //     return { error: 'Internal Server Error' };
-    //   }
-    // }
-  // };
-
-  //   // try{
-
-  //     const mm = await message.verify({
-  //       mobile: phoneNumber,
-  //       otp: code,
-  //     })
-
-  //     console.log(mm);
-
-      // const user = await User.findOne({phoneNumber : phoneNumber});
-    //   console.log(user);
-
-      // const user = await User.findOneAndUpdate({ phoneNumber: mobile }, { $set: { isVerified: true }}, { new: true });
-
-    //   // console.log(user);
-
-      // if (user) {
-      //   return {
-      //     message: 'Registration was successful!',
-      //     user: {
-      //       token: user.token,
-      //       isVerified: user.isVerified,
-      //     },
-      //   };
-      // }else{
-      //   console.log('kkk');
-      // }
-    
-    // }catch(error){
-    //   if (isMessageWayError(error)) {
-    //     return {
-    //       code: error.code,
-    //       message: error.message,
-    //     };
-    //   } else {
-    //     console.log('kk');
-    //     return error;
-      // }
-    // }
-  // };
-
-
-
 
 
 module.exports = {sendCode, getStatus, checkVerifyCode};
